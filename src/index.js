@@ -299,6 +299,43 @@ tl.to(flowerGroup.position, { z: 0, duration: 3, ease: 'power2.inOut' }, "-=2");
 // Swap the positions of the terrain and the sun
 tl.to(sphere.position, { x: -8, y: 3.7, z: -1, duration: 3.4, ease: 'circ.inOut' });
 tl.to(terrain.position, { x: 8, y: 4.9, z: -2, duration: 3.3, ease: 'circ.inOut' }, "-=3.4");
+
+// Function to check if the mouse is over the flower
+const isMouseOverFlower = (event) => {
+  // Get mouse position
+  const mouse = new THREE.Vector2();
+  mouse.x = (event.clientX / window.innerWidth) * 2 - 1;
+  mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+
+  // Raycasting
+  const raycaster = new THREE.Raycaster();
+  raycaster.setFromCamera(mouse, camera);
+
+  // Check for intersections with flowerGroup
+  const intersects = raycaster.intersectObject(flowerGroup, true);
+
+  return intersects.length > 0;
+};
+
+// Mousemove event listener
+window.addEventListener('mousemove', (event) => {
+  // Check if the mouse is over the flower
+  const isOverFlower = isMouseOverFlower(event);
+
+  // Rotate the petals if the mouse is over the flower, otherwise stop the rotation
+  if (isOverFlower) {
+    gsap.to(flowerMesh.rotation, {
+      z: "+=2", // Rotate the petals
+      duration: 1, // Animation duration
+      ease: "power1.inOut", // Easing function
+      repeat: -1, // Repeat indefinitely
+      yoyo: true // Reverse the rotation
+    });
+  } else {
+    gsap.killTweensOf(flowerMesh.rotation); // Stop the rotation animation
+  }
+});
+
 // Animation function
 const animate = () => {
   requestAnimationFrame(animate);

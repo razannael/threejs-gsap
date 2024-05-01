@@ -893,6 +893,33 @@ tl.to(terrain.position, {
     duration: 3.3,
     ease: "circ.inOut"
 }, "-=3.4");
+// Function to check if the mouse is over the flower
+const isMouseOverFlower = (event)=>{
+    // Get mouse position
+    const mouse = new _three.Vector2();
+    mouse.x = event.clientX / window.innerWidth * 2 - 1;
+    mouse.y = -(event.clientY / window.innerHeight) * 2 + 1;
+    // Raycasting
+    const raycaster = new _three.Raycaster();
+    raycaster.setFromCamera(mouse, camera);
+    // Check for intersections with flowerGroup
+    const intersects = raycaster.intersectObject(flowerGroup, true);
+    return intersects.length > 0;
+};
+// Mousemove event listener
+window.addEventListener("mousemove", (event)=>{
+    // Check if the mouse is over the flower
+    const isOverFlower = isMouseOverFlower(event);
+    // Rotate the petals if the mouse is over the flower, otherwise stop the rotation
+    if (isOverFlower) (0, _gsap.gsap).to(flowerMesh.rotation, {
+        z: "+=2",
+        duration: 1,
+        ease: "power1.inOut",
+        repeat: -1,
+        yoyo: true // Reverse the rotation
+    });
+    else (0, _gsap.gsap).killTweensOf(flowerMesh.rotation); // Stop the rotation animation
+});
 // Animation function
 const animate = ()=>{
     requestAnimationFrame(animate);
