@@ -1,4 +1,4 @@
 
 
-https://github.com/razannael/threejs-gsap/assets/127951072/d449d0a9-94c6-4ad4-99b1-43a8abf07c77
+https://github.com/razannael/threejs-gsap/assets/127951072/4e2a8ca4-4d0e-4a28-9d26-f5d8cff30c2c
 
