@@ -1,0 +1,19 @@
+{
+  "name": "taskk",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+   "start": "parcel src/index.html"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "parcel": "^2.12.0"
+  },
+  "dependencies": {
+    "gsap": "^3.12.5",
+    "three": "^0.164.1"
+  }
+}
