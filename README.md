@@ -17,9 +17,6 @@ To run this project locally, do this commands in your terminal:
    git clone https://github.com/razannael/threejs-gsap.git
    ```
    ```bash
-   npm init -y
-   ```
-   ```bash
    npm install --save-dev parcel
    ```
    ```bash
