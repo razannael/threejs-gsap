@@ -11,7 +11,11 @@ This task demonstrates a 3D scene animation using Three.js and GSAP. It includes
 
 ## Setup
 To run this project locally, do this commands in your terminal:
-   
+
+
+   ```bash
+   git clone https://github.com/razannael/threejs-gsap.git
+   ```
    ```bash
    npm init -y
    ```
